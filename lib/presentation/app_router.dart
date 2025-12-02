@@ -10,14 +10,12 @@ class AppRouter {
   static GoRouter router = GoRouter(
     initialLocation: '/login',
     routes: [
-      /// LOGIN SCREEN
       GoRoute(
         path: '/login',
         name: 'login',
         builder: (context, state) => const LoginScreen(),
       ),
 
-      /// MAIN SHELL ROUTE WITH BOTTOM NAV
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return Scaffold(
@@ -39,7 +37,6 @@ class AppRouter {
           );
         },
         branches: [
-          /// TICKETS TAB
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -61,7 +58,6 @@ class AppRouter {
             ],
           ),
 
-          /// PROFILE TAB
           StatefulShellBranch(
             routes: [
               GoRoute(
