@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
       storage: storage,
     );
 
+    final appRouter = AppRouter(
+      authCubit: authCubit,
+      ticketsCubit: ticketsCubit,
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>.value(value: authCubit),
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Ticket Resolution',
-        routerConfig: AppRouter.router,
+        routerConfig: appRouter.router,
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
         darkTheme: ThemeData(
           brightness: Brightness.dark,
