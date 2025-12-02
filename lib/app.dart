@@ -4,7 +4,7 @@ import 'logic/auth/auth_cubit.dart';
 import 'logic/tickets/tickets_cubit.dart';
 import 'data/repositories/ticket_repository.dart';
 import 'core/services/local_storage_service.dart';
-import 'presentation/router.dart';
+import 'presentation/app_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,8 +18,6 @@ class MyApp extends StatelessWidget {
       storage: storage,
     );
 
-    final router = buildRouter(authCubit);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>.value(value: authCubit),
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Ticket Resolution',
-        routerConfig: router,
+        routerConfig: AppRouter.router,
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
         darkTheme: ThemeData(
           brightness: Brightness.dark,
