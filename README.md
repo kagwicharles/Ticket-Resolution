@@ -35,9 +35,3 @@ You can download the latest APK from the Releases page:
 
 👉 [**Download APK (Latest Release)**](../../releases/latest)
 (Available under the “Assets” section of the latest release.)
-
-## Notes & possible improvements
-- Add tests.
-- Use Hive or sqlite for more robust local storage for complex objects.
-- Add animations for mark-resolved and page transitions.
-- Add onboarding and better error UI.
