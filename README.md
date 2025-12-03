@@ -30,8 +30,11 @@ A small Flutter app demonstrating:
 - `lib/presentation/*` : Screens, widgets, router
 - `lib/core/services/local_storage_service.dart` : small wrapper around `shared_preferences`
 
-## APK
-Place the generated APK in the root of this repo (e.g. `ticket_resolution_app.apk`)
+## Download APK
+You can download the latest APK from the Releases page:
+
+👉 [**Download APK (Latest Release)**](../../releases/latest)
+(Available under the “Assets” section of the latest release.)
 
 ## Notes & possible improvements
 - Add tests.
