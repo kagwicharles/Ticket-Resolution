@@ -13,10 +13,15 @@ class TicketCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Card(
-      elevation: 1.5,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      surfaceTintColor: theme.colorScheme.surface,
+      elevation: 0,
+      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.5),
+          width: 1,
+        ),
+      ),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () => GoRouter.of(context).push('/tickets/details/${ticket.id}'),
@@ -25,22 +30,34 @@ class TicketCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Avatar
-              CircleAvatar(
-                radius: 22,
-                backgroundColor: theme.colorScheme.primaryContainer.withOpacity(
-                  0.8,
+              // Avatar with gradient
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      theme.colorScheme.primaryContainer,
+                      theme.colorScheme.primaryContainer.withOpacity(0.7),
+                    ],
+                  ),
                 ),
-                child: Text(
-                  ticket.id.toString(),
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.bold,
+                child: Center(
+                  child: Text(
+                    '#${ticket.id}',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: theme.colorScheme.onPrimaryContainer,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                 ),
               ),
 
-              const SizedBox(width: 14),
+              const SizedBox(width: 16),
 
               // Text Column
               Expanded(
@@ -53,15 +70,17 @@ class TicketCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
+                        letterSpacing: 0.1,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 8),
                     Text(
                       ticket.body,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onSurfaceVariant,
+                        height: 1.4,
                       ),
                     ),
                   ],
@@ -74,23 +93,31 @@ class TicketCard extends StatelessWidget {
               if (resolved)
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
+                    horizontal: 12,
+                    vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: theme.colorScheme.primary.withOpacity(0.12),
-                    border: Border.all(
-                      color: theme.colorScheme.primary.withOpacity(0.3),
-                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    color: theme.colorScheme.primaryContainer.withOpacity(0.6),
                   ),
-                  child: Text(
-                    'Resolved',
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: theme.colorScheme.primary,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.3,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.check_circle_rounded,
+                        size: 16,
+                        color: theme.colorScheme.primary,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        'Resolved',
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
             ],
