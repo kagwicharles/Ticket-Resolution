@@ -13,8 +13,9 @@ class TicketsScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Tickets')),
       body: BlocBuilder<TicketsCubit, TicketsState>(
         builder: (context, state) {
-          if (state.loading)
+          if (state.loading) {
             return const Center(child: CircularProgressIndicator());
+          }
           if (state.error != null) {
             return Center(child: Text('Error: ${state.error}'));
           }

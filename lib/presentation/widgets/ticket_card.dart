@@ -19,7 +19,7 @@ class TicketCard extends StatelessWidget {
       surfaceTintColor: theme.colorScheme.surface,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: () => GoRouter.of(context).push('/home/ticket/${ticket.id}'),
+        onTap: () => GoRouter.of(context).push('/tickets/details/${ticket.id}'),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
